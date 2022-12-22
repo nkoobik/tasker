@@ -15,10 +15,10 @@
 <script>
 export default {
   mounted() {
-    console.log('!!router', this.$route, this.$route.params);
+    console.log('!!router', this.$route, this.$route.getParams);
   },
   updated() {
-    console.log('!!router upd', this.$route, this.$route.params);
+    console.log('!!router upd', this.$route, this.$route.getParams);
   }
 };
 </script>

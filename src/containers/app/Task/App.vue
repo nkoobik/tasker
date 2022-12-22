@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <h1>Тут будет задача</h1>
-    <h2>{{ $route.params.id }}</h2>
+    <h2>{{ $route.getParams.id }}</h2>
   </div>
 </template>
 
