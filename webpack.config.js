@@ -9,10 +9,20 @@ module.exports = {
   output: {
     filename: "[name].[contenthash:8].js",
     path: path.resolve(__dirname, "dist"),
-    chunkFilename: "[name].[contenthash:8].js",
+    chunkFilename: "[name].[contenthash:8].js"
   },
   module: {
     rules: [
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        options: {
+          quite: true,
+          emitWarning: true,
+        },
+        include: path.join(__dirname, 'src')
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -64,18 +74,27 @@ module.exports = {
           esModule: false,
         },
       },
-    ],
+    ]
   },
   plugins: [
     new VueLoaderPlugin(),
     new htmlWebpackPlugin({
-      template: path.resolve(__dirname, "public", "index.html"),
-    }),
+      template: path.resolve(__dirname, "public", "index.html")
+    })
   ],
   resolve: {
     alias: {
       vue$: "vue/dist/vue.runtime.esm.js",
+      lib: path.join(__dirname, 'src', 'lib')
     },
-    extensions: ["*", ".js", ".vue", ".json"],
+    extensions: ["*", ".js", ".vue", ".json"]
   },
+  devServer: {
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false
+      }
+    }
+  }
 };

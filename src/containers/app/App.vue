@@ -19,6 +19,6 @@ export default {
   },
   updated() {
     console.log('!!router upd', this.$route, this.$route.getParams);
-  }
+  },
 };
 </script>
