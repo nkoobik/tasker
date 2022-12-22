@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_ROUTES } from './apiRoutes';
+import { API_ROUTES } from 'lib/system/apiRoutes';
 
 export async function requestApiGet({ route, getParams, errorCallback }) {
   try {
